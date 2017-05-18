@@ -190,6 +190,7 @@ typedef struct {
   QDP_Writer *qw;
   lattice_t *lat;
   int open;
+  int pending;
 } writer_t;
 writer_t *qopqdp_writer_create(lua_State *L, const char *fn, const char *mds, lattice_t *lat);
 writer_t *qopqdp_writer_check(lua_State *L, int idx);
@@ -587,6 +588,7 @@ asqtad_t *qopqdp_asqtad_check(lua_State *L, int idx);
 typedef struct {
   double time;
   double flops;
+  double rsq;
   int its;
   int nc;
   lattice_t *lat;
@@ -612,6 +614,7 @@ void asqtadInvert(QOP_info_t *info, QOP_FermionLinksAsqtad *fla,
 typedef struct {
   double time;
   double flops;
+  double rsq;
   int its;
   int nc;
   lattice_t *lat;
@@ -629,6 +632,7 @@ wilson_t *qopqdp_wilson_check(lua_State *L, int idx);
 typedef struct {
   double time;
   double flops;
+  double rsq;
   int its;
   int ls;
   QOP_dw_coeffs_t coeffs;
